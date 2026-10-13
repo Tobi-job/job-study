@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者ダッシュボード</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>管理者ダッシュボード</h1>
+        <a href="/logout">ログアウト</a>
+    </div>
+
+    <div class="container">
+        <div class="welcome-card">
+            <h2 th:text="${message}">ログイン成功！</h2>
+            <div class="user-info">
+                <p><strong>ログインユーザー:</strong> <span th:text="${username}">admin</span></p>
+                <p><strong>権限:</strong> <span th:text="${role}">ADMIN</span></p>
+            </div>
+
+            <h3>登録ユーザー一覧</h3>
+            <table class="user-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ユーザー名</th>
+                    <th>パスワード</th>
+                    <th>役割</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}">1</td>
+                    <td>
+                        <form method="post" th:action="@{/admin/users/update}">
+                            <input type="hidden" name="userId" th:value="${user.id}">
+                            <input type="text" name="username" th:value="${user.username}" class="edit-input">
+                    </td>
+                    <td>
+                            <input type="text" name="password" value="" placeholder="変更しない場合は空欄" class="edit-input">
+                    </td>
+                    <td>
+                            <select name="role" class="edit-input">
+                                <option value="USER" th:selected="${user.role == 'USER'}">USER</option>
+                                <option value="ADMIN" th:selected="${user.role == 'ADMIN'}">ADMIN</option>
+                            </select>
+                    </td>
+                    <td>
+                            <button type="submit" class="btn btn-primary">更新</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

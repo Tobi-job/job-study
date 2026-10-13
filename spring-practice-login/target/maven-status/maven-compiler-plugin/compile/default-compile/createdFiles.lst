@@ -1,0 +1,7 @@
+com\example\springpractice\controller\LoginController.class
+com\example\springpractice\LoginApplication.class
+com\example\springpractice\config\WebMvcConfig.class
+com\example\springpractice\entity\User.class
+com\example\springpractice\service\UserService.class
+com\example\springpractice\interceptor\SessionInterceptor.class
+com\example\springpractice\repository\UserRepository.class

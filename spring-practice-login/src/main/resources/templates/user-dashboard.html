@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザーダッシュボード</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>ユーザーダッシュボード</h1>
+        <a href="/logout">ログアウト</a>
+    </div>
+
+    <div class="container">
+        <div class="welcome-card">
+            <h2 th:text="${message}">ログイン成功！</h2>
+            <div class="user-info">
+                <p><strong>ログインユーザー:</strong> <span th:text="${username}">user</span></p>
+                <p><strong>権限:</strong> <span th:text="${role}">USER</span></p>
+            </div>
+
+            <h3>自分の情報</h3>
+            <div class="user-info personal-info">
+                <p><strong>ID:</strong> <span th:text="${user.id}">1</span></p>
+                <p><strong>ユーザー名:</strong> <span th:text="${user.username}">user</span></p>
+                <p><strong>役割:</strong> <span th:text="${user.role}">USER</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダッシュボード</title>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Spring Boot アプリ</h1>
+        <a href="/api/test">API テスト</a>
+    </div>
+    
+    <div class="container">
+        <div class="welcome-card">
+            <h2 th:text="${message}">ログイン成功！</h2>
+            
+            <div class="user-info">
+                <p><strong>ログインユーザー:</strong> <span th:text="${username}">ユーザー名</span></p>
+                <p><strong>アクセス時刻:</strong> <span th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}">現在時刻</span></p>
+            </div>
+            
+            <p>ダッシュボードへようこそ。このページはサインイン後に表示されます。</p>
+            
+            <div class="actions">
+                <a href="/logout" class="btn btn-primary">ログアウト</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
